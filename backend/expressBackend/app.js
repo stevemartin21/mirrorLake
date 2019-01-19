@@ -1,11 +1,30 @@
+/*
+"C:\Program Files\MongoDB\Server\3.6\bin\mongod.exe"
+"C:\Program Files\MongoDB\Server\3.6\bin\mongo.exe"
+Connection to the database and mongo shell
+*/
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const cors = require('cors');
+const mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+//  hash the password to make it more secure
+
+const GridFsStorage = require('multer-gridfs-storage');
+const Grid = require('gridfs-stream');
+// imported model route
+const passport = require('passport');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var createRouter = require('./routes/create');
+var readRouter = require('./routes/read');
+var updateRouter = require('./routes/update');
+var deleteRouter = require('./routes/delete');
 
 var app = express();
 
@@ -21,6 +40,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('./create', createRouter);
+app.use('./read', readRouter);
+app.use('./update', updateRouter);
+app.use('./delete', deleteRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
