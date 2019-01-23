@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-
+import {withRouter } from 'react-router-dom';
 import axios from 'axios';
 import classnames from 'classnames';
 import {updateLake} from '../../actions/updateActions';
@@ -51,7 +51,7 @@ import {updateLake} from '../../actions/updateActions';
      }
 
      console.log(updatedLake)
-     this.props.updateLake(id, updatedLake)
+     this.props.updateLake(id, updatedLake, this.props.history)
    }
 
 
@@ -150,4 +150,4 @@ const mapStateToProps = (state) => ({
   lake: state.lake
 })
 
-export default connect(mapStateToProps, { updateLake})(EditLake)
+export default connect(mapStateToProps, { updateLake})(withRouter(EditLake))

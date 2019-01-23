@@ -10,12 +10,39 @@ var Campground = require('../models/campground');
 var Attraction = require('../models/attraction');
 
 router.delete('/lake/:id', (req, res) => {
-    console.log(req.params.id)
     Lake.deleteOne({_id: req.params.id})
         .then(lake => {
             res.status(200).json(lake)
         }).catch(err => res.status(400).json(err))
 })
+
+/*
+
+// @access  Private
+router.delete(
+  '/experience/:exp_id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id })
+      .then(profile => {
+        // Get remove index
+        const removeIndex = profile.experience
+          .map(item => item.id)
+          .indexOf(req.params.exp_id);
+
+        // Splice out of array
+        profile.experience.splice(removeIndex, 1);
+
+        // Save
+        profile.save().then(profile => res.json(profile));
+      })
+      .catch(err => res.status(404).json(err));
+  }
+);
+
+
+
+*/
 
 router.delete('/river/:id', (req, res) => {
     River.deleteOne({_id: req.params.id})

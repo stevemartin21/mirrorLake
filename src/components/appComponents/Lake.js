@@ -7,8 +7,8 @@ import {deleteLake} from '../../actions/deleteActions';
 
  class Lake extends Component {
 
-  onDeleteClick(id  ) {
-    this.props.deleteLake(id)
+  onDeleteClick(id ) {
+    this.props.deleteLake(id, this.props.history)
   }
 
   
