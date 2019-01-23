@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var bcrypt = require('bcryptjs');
-var jsw = require('jsonwebtoken');
+var jwt = require('jsonwebtoken');
 
  //  Lakes, Rivers, Peaks, Special Attractions, Campgrounds, Trails
 var User = require('../models/user');
@@ -38,19 +38,23 @@ router.post('/user', (req, res) => {
 let selectedUser;
 
 router.post('/token', (req, res) => {
-    User.findOne({email: req.body.emaiil}).then(user => {
+    User.findOne({email: req.body.email}).then(user => {
+        console.log(user);
         if(!user) {
             res.status(400).json({message: "there is not a user with that email"})
         } else {
             selectedUser = user;
            return bcrypt.compare(req.body.password, user.password)
                 .then(success => {
+                    console.log(success);
                     if(!success) {
                         res.status(400).json({message: 'passwords do not match'})
                     }
                     const token = jwt.sign({email: selectedUser.email, userId: selectedUser._id, name: selectedUser.name},
                         'secretisyabbdabbado',
                         {expiresIn: '1h'})
+
+                        console.log(token);
 
                         res.status(200).json({
                             token: 'Bearer ' + token,

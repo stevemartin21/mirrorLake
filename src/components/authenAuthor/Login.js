@@ -1,4 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+import {withRouter} from 'react-router-dom';
+import {loginUser} from '../../actions/authActions';
+import classnames from 'classnames';
 
  class Login extends Component {
      constructor() {
@@ -10,6 +15,24 @@ import React, { Component } from 'react'
          }
      }
 
+     componentDidMount() {
+        if (this.props.auth.isAuthenticated) {
+          this.props.history.push('/dashboard');
+        }
+      }
+
+     componentWillReceiveProps(nextProps) {
+
+        if(nextProps.auth.isAuthenticated) {
+            this.props.history.push('/dashboard')
+        }
+         if( nextProps.errors) {
+             this.setState({
+                 errors: nextProps.errors
+             })
+         }
+     }
+
      onChange = (e) => {
          this.setState({
              [e.target.name]: e.target.value
@@ -17,12 +40,16 @@ import React, { Component } from 'react'
      }
 
      onSubmit = (e) => {
+         e.preventDefault();
          const newUser = {
              email: this.state.email,
              password: this.state.password
          }
+
+         this.props.loginUser(newUser);
      }
   render() {
+      const {errors} = this.state
     return (
       <div className='container mt-5'>
           <div className='card'>
@@ -52,12 +79,10 @@ import React, { Component } from 'react'
                         <input 
                             type='text'
                             placeholder='Password'
-                            value={this.state.email}
+                            value={this.state.password}
                             name='password'
                             className='form-control'
-                            onChange={this.onChange}
-                        
-                        
+                            onChange={this.onChange} 
                         />
                     </div>
 
@@ -66,21 +91,9 @@ import React, { Component } from 'react'
                         type='submit'
                         className='btn btn-success'
                         value='Submit'
-                    
-                    
                     />
-
                     </form>
-                
-                
-                
-                
-                
                 </div>
-          
-          
-          
-          
           </div>
         
       </div>
@@ -88,4 +101,14 @@ import React, { Component } from 'react'
   }
 }
 
-export default Login
+Login.propTypes = {
+    loginUser: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired
+}
+
+const mapStateToProps = (state) => ({
+    auth: state.auth,
+    errors: state.errors
+})
+
+export default connect(mapStateToProps, {loginUser})(Login)

@@ -1,1 +1,9 @@
 export const TEST_DISPATCH = 'TEST_DISPATCH';
+export const GET_ERRORS = 'GET_ERRORS';
+export const SET_CURRENT_USER = 'SET_CURRENT_USER';
+export const CREATE_LAKE = 'CREATE_LAKE';
+export const READ_LAKES = 'READ_LAKES';
+export const READ_LAKE = 'READ_LAKE';
+export const UPDATE_LAKE = 'UPDATE_LAKE';
+export const DELETE_LAKE = 'DELETE_LAKE';
+export const CLEAR_CURRENT_USER = 'CLEAR_CURRENT_USER';

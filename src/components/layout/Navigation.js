@@ -1,57 +1,98 @@
-import React from "react";
-import { Navbar, NavbarBrand, NavbarNav, NavItem, NavLink, NavbarToggler, Collapse, FormInline, Dropdown, DropdownToggle, DropdownMenu,  DropdownItem } from "mdbreact";
+import React, { Component } from 'react';
+// import { Navbar, NavbarBrand, NavbarNav, NavItem, NavLink, NavbarToggler, Collapse, FormInline, Dropdown, DropdownToggle, DropdownMenu,  DropdownItem } from "mdbreact";
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { logoutUser } from '../../actions/authActions';
 
-class Navigation extends React.Component {
-  state = {
-    isOpen: false
-  };
-
-  toggleCollapse = this.setState({ isOpen: !this.state.isOpen });
-
+class Navigation extends Component {
+  onLogOutClick(e) {
+    e.preventDefault();
+    this.props.logoutUser();
+  }
   render() {
-    return (
 
-      <Navbar color="indigo" dark expand="md">
-          <NavbarBrand>
-            <strong className="white-text">Mirror Lake Highway</strong>
-          </NavbarBrand>
-          <NavbarToggler
-            onClick={this.toggleCollapse}
-          />
-          <Collapse
-            id="navbarCollapse3"
-            isOpen={this.state.isOpen}
-            navbar
-          >
-            <NavbarNav right>
-              <NavItem active>
-                <NavLink to="#!">Home</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to="/register">Register</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to="login">Login</NavLink>
-              </NavItem>
-              <NavItem>
-                <Dropdown>
-                  <DropdownToggle nav caret>
-                    <div className="d-none d-md-inline">See Attractions</div>
-                  </DropdownToggle>
-                  <DropdownMenu right>
-                    <DropdownItem href="#!">Action</DropdownItem>
-                    <DropdownItem href="#!">Another Action</DropdownItem>
-                    <DropdownItem href="#!">Something else here</DropdownItem>
-                    <DropdownItem href="#!">Something else here</DropdownItem>
-                  </DropdownMenu>
-                </Dropdown>
-              </NavItem>
-            </NavbarNav>
-            
-          </Collapse>
-      </Navbar>
+    
+
+    const { isAuthenticated, user } = this.props.auth;
+
+    const authLinks = (
+      <ul className="navbar-nav ml-auto">
+      <li className="nav-item active">
+        <Link className="nav-link"  to='/' >Dashboard
+          <span className="sr-only">(current)</span>
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link className="nav-link"  to='/manageLakes' >Manage Lakes </Link>
+      </li>
+
+      <li className="nav-item">
+        <Link className="nav-link"  to='/addLake' >Add Lakes</Link>
+      </li>
+    
+      <li className="nav-item">
+        <a className="nav-link" onClick={this.onLogOutClick.bind(this)}  >Logout</a>
+      </li>
+    </ul>
     );
+
+    const guestLinks = (
+      <ul className="navbar-nav ml-auto">
+      <li className="nav-item active">
+        <Link className="nav-link"  to='/' >Home
+          <span className="sr-only">(current)</span>
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link className="nav-link"  to='/attractions' >See Attractions </Link>
+      </li>
+      <li className="nav-item">
+        <Link className="nav-link"  to='/register' >Register</Link>
+      </li>
+      <li className="nav-item">
+        <Link className="nav-link"  to='/login' >Login</Link>
+      </li>
+      <li className="nav-item">
+        <Link className="nav-link"  to='/contact'>Contact</Link>
+      </li>
+    </ul>
+    )
+
+     
+    return (
+      <div>
+            
+<nav className="navbar navbar-expand-lg navbar-dark elegant-color">
+
+  
+  <Link className="navbar-brand text-white" to='/' >Mirror Lake Highway</Link>
+
+  
+  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span className="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div className="collapse navbar-collapse" id="basicExampleNav">
+
+  {isAuthenticated ? authLinks : guestLinks}
+   
+  </div>
+</nav>  
+      </div>
+    )
   }
 }
 
-export default Navigation;
+Navigation.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps, { logoutUser })(Navigation);

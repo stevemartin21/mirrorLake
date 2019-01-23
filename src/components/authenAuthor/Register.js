@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import {connect } from 'react-redux';
 import {registerUser} from '../../actions/authActions';
-import PropTypes  from 'prop-types'
+import PropTypes  from 'prop-types';
+import {withRouter} from 'react-router-dom';
 
  class Register extends Component {
 
@@ -13,6 +14,20 @@ import PropTypes  from 'prop-types'
              email: '',
              password: '',
              errors: {}
+         }
+     }
+
+     componentDidMount() {
+        if (this.props.auth.isAuthenticated) {
+          this.props.history.push('/dashboard');
+        }
+      }
+
+     componentWillReceiveProps(nextProps) {
+         if(nextProps.errors) {
+             this.setState({
+                 errors: nextProps.errors
+             })
          }
      }
 
@@ -30,7 +45,7 @@ import PropTypes  from 'prop-types'
              password: this.state.password
          }
          console.log(newUser)
-         this.props.registerUser(newUser)
+         this.props.registerUser(newUser, this.props.history)
      }
   render() {
       const { errors} = this.state;
@@ -93,16 +108,18 @@ import PropTypes  from 'prop-types'
 
 Register.propTypes = {
     registerUser: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({
-    auth: state.auth
+    auth: state.auth,
+    errors: state.errors
 })
 
 // need to use fucntion to grab state from the root reducer and then can use it 
 
-export default connect(mapStateToProps, {registerUser})(Register)
+export default connect(mapStateToProps, {registerUser})(withRouter(Register))
 
 // this connects it to the state and connnects the functions registerUser
 // and also makes state props that can be used in teh component

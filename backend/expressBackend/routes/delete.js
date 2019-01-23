@@ -10,6 +10,7 @@ var Campground = require('../models/campground');
 var Attraction = require('../models/attraction');
 
 router.delete('/lake/:id', (req, res) => {
+    console.log(req.params.id)
     Lake.deleteOne({_id: req.params.id})
         .then(lake => {
             res.status(200).json(lake)

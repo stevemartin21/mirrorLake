@@ -17,9 +17,11 @@ router.put('/lake/:id', (req, res) => {
         image: req.body.image,
         description: req.body.description
     } 
+    console.log(newLake)
 
-    Lake.updateOne({_id: req.param.id}, newLake)
+    Lake.updateOne({_id: req.params.id}, newLake)
         .then(lake => {
+            console.log(lake);
         res.status(200).json(lake)
     }).catch(err => res.status(400).json(err))
 })
@@ -31,7 +33,7 @@ router.put('/river/:id', (req, res) => {
         description: req.body.description
     }
 
-    River.updateOne({_id: req.param.id}, newRiver).then(river => {
+    River.updateOne({_id: req.params.id}, newRiver).then(river => {
         res.status(200).json(river)
     }).catch(err => res.status(400).json(err))
 })
@@ -44,7 +46,7 @@ router.put('/peak/:id', (req, res) => {
         description: req.body.description
     }
 
-    Peak.updateOne({_id: req.param.id}, newPeak).then(peak => {
+    Peak.updateOne({_id: req.params.id}, newPeak).then(peak => {
         res.status(200).json(peak)
     }).catch(err => res.status(400).json(err))
 })
@@ -57,7 +59,7 @@ router.post('/trail/:id', (req, res) => {
         description: req.body.description
     }
 
-    Trail.updateOne({_id: req.param.id}, newTrail).then(trail => {
+    Trail.updateOne({_id: req.params.id}, newTrail).then(trail => {
         res.status(200).json(trail)
     }).catch(err => res.status(400).json(err))
 })
@@ -69,7 +71,7 @@ router.post('/campground/:id', (req, res) => {
         description: req.body.description
     }
 
-    Campground.updateOne({_id: req.param.id}, newCampground).then(campground => {
+    Campground.updateOne({_id: req.params.id}, newCampground).then(campground => {
         res.status(200).json(campground)
     }).catch(err => res.status(400).json(err))
 })
@@ -81,7 +83,7 @@ router.post('/attraction/:id', (req, res) => {
         description: req.body.description
     }
 
-    Attraction.updateOne({_id: req.param.id}, newAttraction).then(attraction => {
+    Attraction.updateOne({_id: req.params.id}, newAttraction).then(attraction => {
         res.status(200).json(attraction)
     }).catch(err =>  res.status(400).json(err))
 })

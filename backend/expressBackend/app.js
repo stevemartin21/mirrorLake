@@ -26,7 +26,30 @@ var readRouter = require('./routes/read');
 var updateRouter = require('./routes/update');
 var deleteRouter = require('./routes/delete');
 
+mongoose.connect('mongodb://localhost/angularRealigo');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+// Open connection and use grid fs to upload image
+db.once('open', function () {
+   gfs = Grid(db.db, mongoose.mongo);
+  	console.log('we are connected')
+  // all set!
+  gfs.collection('uploads')
+})
+
 var app = express();
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -38,12 +61,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(passport.initialize());
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('./create', createRouter);
-app.use('./read', readRouter);
-app.use('./update', updateRouter);
-app.use('./delete', deleteRouter);
+app.use('/create', createRouter);
+app.use('/read', readRouter);
+app.use('/update', updateRouter);
+app.use('/delete', deleteRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

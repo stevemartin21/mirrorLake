@@ -1,4 +1,4 @@
-var mongoose = require('mongooose');
+var mongoose = require('mongoose');
 var attractionSchema = mongoose.Schema({
     name: {type: String},
     image: {type: String},
@@ -6,4 +6,4 @@ var attractionSchema = mongoose.Schema({
 
 })
 
-module.exports = mongoose.mode('Attraction', attractionSchema)
+module.exports = mongoose.model('Attraction', attractionSchema)
