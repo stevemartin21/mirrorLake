@@ -51,7 +51,7 @@ import classnames from 'classnames';
   render() {
       const {errors} = this.state
     return (
-      <div className='container mt-5'>
+      <div className='container mt-5 mb-5'>
           <div className='card'>
 
                 <div className='card-header'>Login</div>

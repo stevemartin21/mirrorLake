@@ -15,9 +15,14 @@ import AddLake from './components/appComponents/AddLake';
 import Dashboard from './components/appComponents/Dashboard';
 import ManageLakes from './components/appComponents/ManageLakes';
 import EditLake from './components/appComponents/EditLake';
+import AddAttraction from './components/appComponents/attractions/AddAttractions';
+import AddCampground from './components/appComponents/campgrounds/AddCampground';
+import AddPeak from './components/appComponents/peaks/AddPeak';
+import AddRiver from './components/appComponents/rivers/AddRiver';
+import AddTrail from './components/appComponents/trails/AddTrail';
 
 if (localStorage.jwtToken) {
-  // Set auth token header auth
+  // Set auth token header auth need to add a trail
   setAuthToken(localStorage.jwtToken);
   // Decode token and get user info and exp
   const decoded = jwt_decode(localStorage.jwtToken);
@@ -54,6 +59,12 @@ class App extends Component {
         <PrivateRouter exact path='/dashboard' component={Dashboard} />
         <PrivateRouter exact path='/manageLakes' component={ManageLakes} />
         <PrivateRouter exact path='/editLake/:id' component={EditLake} />
+        <PrivateRouter exact path='/addAttraction' component={AddAttraction} />
+        <PrivateRouter exact path='/addCampground' component={AddCampground} />
+        <PrivateRouter exact path='/addPeak' component={AddPeak} />
+        <PrivateRouter exact path='/addRiver' component={AddRiver} />
+        <PrivateRouter exact path='/addTrail' component={AddTrail} />
+        
         </Switch>
         </div>
         <Footer />

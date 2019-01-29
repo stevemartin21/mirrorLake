@@ -4,3 +4,5 @@ var campgroundSchema = mongoose.Schema({
     spots: {type: String},
     description: {type: String}
 })
+
+module.exports = mongoose.model('Campground', campgroundSchema)

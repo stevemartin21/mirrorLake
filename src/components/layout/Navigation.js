@@ -30,6 +30,26 @@ class Navigation extends Component {
       <li className="nav-item">
         <Link className="nav-link"  to='/addLake' >Add Lakes</Link>
       </li>
+
+      <li className="nav-item">
+        <Link className="nav-link"  to='/addAttraction' >Add Attraction</Link>
+      </li>
+
+      <li className="nav-item">
+        <Link className="nav-link"  to='/addCampground' >Add Campground</Link>
+      </li>
+
+      <li className="nav-item">
+        <Link className="nav-link"  to='/addPeak' >Add Peak</Link>
+      </li>
+
+      <li className="nav-item">
+        <Link className="nav-link"  to='/addRiver' >Add River</Link>
+      </li>
+
+      <li className="nav-item">
+        <Link className="nav-link"  to='/addTrail' >Add Trail</Link>
+      </li>
     
       <li className="nav-item">
         <a className="nav-link" onClick={this.onLogOutClick.bind(this)}  >Logout</a>
