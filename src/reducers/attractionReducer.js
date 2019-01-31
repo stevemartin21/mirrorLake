@@ -19,10 +19,9 @@ export default function(state = initialState, action) {
             case READ_ATTRACTION: 
             return {
                 ...state,
-                attration: action.payload
+                attraction: action.payload
             }
         default:
         return state;
-    }
-  
+    }  
 }

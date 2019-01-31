@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-// import { Navbar, NavbarBrand, NavbarNav, NavItem, NavLink, NavbarToggler, Collapse, FormInline, Dropdown, DropdownToggle, DropdownMenu,  DropdownItem } from "mdbreact";
-import { Link } from 'react-router-dom';
+import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem,
+   MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBDropdown,
+  MDBDropdownToggle, MDBDropdownMenu,  MDBIcon,  MDBDropdownItem } from "mdbreact";
+ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/authActions';
@@ -23,33 +25,39 @@ class Navigation extends Component {
           <span className="sr-only">(current)</span>
         </Link>
       </li>
-      <li className="nav-item">
-        <Link className="nav-link"  to='/manageLakes' >Manage Lakes </Link>
-      </li>
 
-      <li className="nav-item">
-        <Link className="nav-link"  to='/addLake' >Add Lakes</Link>
-      </li>
+      <MDBNavItem>
+              <MDBDropdown>
+                <MDBDropdownToggle nav caret>
+                  <span className="mr-2">Manage Items</span>
+                </MDBDropdownToggle>
+                <MDBDropdownMenu>
+                <MDBDropdownItem ><Link to='/manageLakes'>Manage Lakes</Link></MDBDropdownItem>
+                <MDBDropdownItem ><Link to='/manageRivers'>Manage Rivers</Link></MDBDropdownItem>
+                <MDBDropdownItem ><Link to='/manageTrails'>Manage Trails</Link></MDBDropdownItem>
+                <MDBDropdownItem ><Link to='/manageCampgrounds'>Manage Campgrounds</Link></MDBDropdownItem>
+                <MDBDropdownItem ><Link to='/manageAttractions'>Manage Attractions</Link></MDBDropdownItem>
+                <MDBDropdownItem ><Link to='/managePeaks'>Manage Peaks</Link></MDBDropdownItem>
+                </MDBDropdownMenu>
+              </MDBDropdown>
+        </MDBNavItem>
+      <MDBNavItem>
+              <MDBDropdown>
+                <MDBDropdownToggle nav caret>
+                  <span className="mr-2">Add Items</span>
+                </MDBDropdownToggle>
+                <MDBDropdownMenu>
+                <MDBDropdownItem ><Link to='/addLake'>Add Lake</Link></MDBDropdownItem>
+                  <MDBDropdownItem><Link to="/addRiver">Add River</Link></MDBDropdownItem>
+                  <MDBDropdownItem><Link to="/addAttraction">Add Attraction</Link></MDBDropdownItem>
+                  <MDBDropdownItem><Link to="/addCampground">Add Campground</Link></MDBDropdownItem>
+                  <MDBDropdownItem><Link to="/addPeak">Add Peak</Link></MDBDropdownItem>
+                  <MDBDropdownItem><Link to="/addTrail">Add Trail</Link></MDBDropdownItem>
+                </MDBDropdownMenu>
+              </MDBDropdown>
+        </MDBNavItem>
 
-      <li className="nav-item">
-        <Link className="nav-link"  to='/addAttraction' >Add Attraction</Link>
-      </li>
-
-      <li className="nav-item">
-        <Link className="nav-link"  to='/addCampground' >Add Campground</Link>
-      </li>
-
-      <li className="nav-item">
-        <Link className="nav-link"  to='/addPeak' >Add Peak</Link>
-      </li>
-
-      <li className="nav-item">
-        <Link className="nav-link"  to='/addRiver' >Add River</Link>
-      </li>
-
-      <li className="nav-item">
-        <Link className="nav-link"  to='/addTrail' >Add Trail</Link>
-      </li>
+    
     
       <li className="nav-item">
         <a className="nav-link" onClick={this.onLogOutClick.bind(this)}  >Logout</a>

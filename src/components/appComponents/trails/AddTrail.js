@@ -99,7 +99,7 @@ import PropTypes from 'prop-types'
 
 AddTrail.proptypes  = {
     createTrail: PropTypes.func.isRequired,
-    errors: PropTypes.errors.isRequired
+    errors: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({

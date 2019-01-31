@@ -23,7 +23,6 @@ import {createAttraction} from '../../../actions/createActions';
 
         const newAttraction = {
             name: this.state.name,
-            size: this.state.size,
             image: this.state.image,
             description: this.state.description
         }

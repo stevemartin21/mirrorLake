@@ -15,11 +15,22 @@ import AddLake from './components/appComponents/AddLake';
 import Dashboard from './components/appComponents/Dashboard';
 import ManageLakes from './components/appComponents/ManageLakes';
 import EditLake from './components/appComponents/EditLake';
+import ManageAttractions from './components/appComponents/attractions/ManageAttractions';
+import EditCampground from './components/appComponents/campgrounds/EditCampground';
+import ManageCampgrounds from './components/appComponents/campgrounds/ManageCampgrounds';
+import EditAttraction from './components/appComponents/attractions/EditAttraction';
 import AddAttraction from './components/appComponents/attractions/AddAttractions';
+import EditPeaks from './components/appComponents/peaks/EditPeaks';
+import ManagePeaks from './components/appComponents/peaks/ManagePeaks';
 import AddCampground from './components/appComponents/campgrounds/AddCampground';
 import AddPeak from './components/appComponents/peaks/AddPeak';
 import AddRiver from './components/appComponents/rivers/AddRiver';
 import AddTrail from './components/appComponents/trails/AddTrail';
+import EditRiver from './components/appComponents/rivers/EditRiver';
+import ManageRivers from './components/appComponents/rivers/ManageRivers';
+import EditTrails from './components/appComponents/trails/EditTrails';
+import ManageTrails from './components/appComponents/trails/ManageTrails';
+
 
 if (localStorage.jwtToken) {
   // Set auth token header auth need to add a trail
@@ -59,12 +70,21 @@ class App extends Component {
         <PrivateRouter exact path='/dashboard' component={Dashboard} />
         <PrivateRouter exact path='/manageLakes' component={ManageLakes} />
         <PrivateRouter exact path='/editLake/:id' component={EditLake} />
+        <PrivateRouter exact path='/manageAttractions' component={ManageAttractions} />
+        <PrivateRouter exact path='/editAttraction/:id' component={EditAttraction} />
+        <PrivateRouter exact path='/manageCampgrounds' component={ManageCampgrounds} />
+        <PrivateRouter exact path='/editCampground/:id' component={EditCampground} />
+        <PrivateRouter exact path='/managePeaks' component={ManagePeaks} />
+        <PrivateRouter exact path='/editPeak/:id' component={EditPeaks} />
         <PrivateRouter exact path='/addAttraction' component={AddAttraction} />
         <PrivateRouter exact path='/addCampground' component={AddCampground} />
         <PrivateRouter exact path='/addPeak' component={AddPeak} />
         <PrivateRouter exact path='/addRiver' component={AddRiver} />
         <PrivateRouter exact path='/addTrail' component={AddTrail} />
-        
+        <PrivateRouter exact path='/manageRivers' component={ManageRivers} />
+        <PrivateRouter exact path='/editRiver/:id' component={EditRiver} />
+        <PrivateRouter exact path='/manageTrails' component={ManageTrails} />
+        <PrivateRouter exact path='/editTrail/:id' component={EditTrails} />
         </Switch>
         </div>
         <Footer />
