@@ -13,7 +13,7 @@ export default function(state = initialState, action) {
         case READ_CAMPGROUNDS: 
             return {
                 ...state,
-                campground: action.payload
+                campgrounds: action.payload
             }
 
             case READ_CAMPGROUND: 

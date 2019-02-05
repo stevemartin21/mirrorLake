@@ -29,7 +29,7 @@ router.get('/peaks', (req, res) => {
 })
 
 router.get('/trails', (req, res) => {
-    Trail.find().then(trails => {
+    Trail.find().then(trails => {   
         res.status(200).json(trails)
     }).catch(err =>  res.status(400).json(err))
 })

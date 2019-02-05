@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
 import {connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {withRouter} from 'react-router-dom';
-import {readTrails} from '../../../actions/readActions';
-import Trail from './Trail';
+import {readTrails} from '../../actions/readActions';
+import Trail from '../appComponents/trails/Trail';
 
- class ManageTrails extends Component {
-
+class PublicTrails extends Component {
     componentDidMount() {
         this.props.readTrails();
     }
-
-
   render() {
 
     const {trails} = this.props.trail;
@@ -31,28 +27,29 @@ import Trail from './Trail';
     console.log(this.props.trail.trails);
 
 
-    return (
-      <div>
-            <div className='container mt-5 mb-5'>
 
-            <h1> Manage your trails here</h1>
-            {listOfTrails}
-            </div>
-        
-      </div>
+
+    return (
+        <div>
+        <div className='container mt-5 mb-5'>
+
+        <h1> Manage your trails here</h1>
+        {listOfTrails}
+        </div>
+    
+  </div>
     )
   }
 }
 
-ManageTrails.propTypes = {
+PublicTrails.propTypes = {
     readTrails: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({
-    auth: state.auth,
     errors: state.errors,
-    trail: state.trail
+trail: state.trail
 })
 
-export default connect(mapStateToProps, {readTrails})(withRouter(ManageTrails))
+export default connect(mapStateToProps, {readTrails})(PublicTrails)

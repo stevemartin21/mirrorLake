@@ -30,7 +30,12 @@ import EditRiver from './components/appComponents/rivers/EditRiver';
 import ManageRivers from './components/appComponents/rivers/ManageRivers';
 import EditTrails from './components/appComponents/trails/EditTrails';
 import ManageTrails from './components/appComponents/trails/ManageTrails';
-
+import PublicLakes from './components/webSiteComponents/PublicLakes';
+import PublicTrails from './components/webSiteComponents/PublicTrails';
+import PublicAttractions from './components/webSiteComponents/PublicAttractions';
+import PublicCampgrounds from './components/webSiteComponents/PublicCampgrounds';
+import PublicPeaks from './components/webSiteComponents/PublicPeaks';
+import PublicRivers from './components/webSiteComponents/PublicRivers';
 
 if (localStorage.jwtToken) {
   // Set auth token header auth need to add a trail
@@ -65,6 +70,12 @@ class App extends Component {
         <Route exact path='/' component={ Home } />
             <Route exact path='/register' component={ Register } />
             <Route exact path='/login' component={ Login } />
+            <Route exact path='/lakes' component={ PublicLakes } />
+            <Route exact path='/trails' component={ PublicTrails } />
+            <Route exact path='/attractions' component={ PublicAttractions } />
+            <Route exact path='/campgrounds' component={ PublicCampgrounds } />
+            <Route exact path='/peaks' component={ PublicPeaks } />
+            <Route exact path='/rivers' component={ PublicRivers } />
         <Switch>  
         <PrivateRouter exact path='/addLake' component={AddLake} />
         <PrivateRouter exact path='/dashboard' component={Dashboard} />

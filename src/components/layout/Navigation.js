@@ -32,12 +32,15 @@ class Navigation extends Component {
                   <span className="mr-2">Manage Items</span>
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
-                <MDBDropdownItem ><Link to='/manageLakes'>Manage Lakes</Link></MDBDropdownItem>
-                <MDBDropdownItem ><Link to='/manageRivers'>Manage Rivers</Link></MDBDropdownItem>
-                <MDBDropdownItem ><Link to='/manageTrails'>Manage Trails</Link></MDBDropdownItem>
-                <MDBDropdownItem ><Link to='/manageCampgrounds'>Manage Campgrounds</Link></MDBDropdownItem>
-                <MDBDropdownItem ><Link to='/manageAttractions'>Manage Attractions</Link></MDBDropdownItem>
-                <MDBDropdownItem ><Link to='/managePeaks'>Manage Peaks</Link></MDBDropdownItem>
+                <MDBDropdownItem ><Link to='/manageAttractions'> Attractions</Link></MDBDropdownItem>
+                <MDBDropdownItem ><Link to='/manageCampgrounds'> Campgrounds</Link></MDBDropdownItem>
+                <MDBDropdownItem ><Link to='/manageLakes'> Lakes</Link></MDBDropdownItem>
+                <MDBDropdownItem ><Link to='/managePeaks'> Peaks</Link></MDBDropdownItem>
+                <MDBDropdownItem ><Link to='/manageRivers'> Rivers</Link></MDBDropdownItem>
+                <MDBDropdownItem ><Link to='/manageTrails'> Trails</Link></MDBDropdownItem>
+                
+                
+                
                 </MDBDropdownMenu>
               </MDBDropdown>
         </MDBNavItem>
@@ -47,12 +50,12 @@ class Navigation extends Component {
                   <span className="mr-2">Add Items</span>
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
-                <MDBDropdownItem ><Link to='/addLake'>Add Lake</Link></MDBDropdownItem>
-                  <MDBDropdownItem><Link to="/addRiver">Add River</Link></MDBDropdownItem>
-                  <MDBDropdownItem><Link to="/addAttraction">Add Attraction</Link></MDBDropdownItem>
-                  <MDBDropdownItem><Link to="/addCampground">Add Campground</Link></MDBDropdownItem>
-                  <MDBDropdownItem><Link to="/addPeak">Add Peak</Link></MDBDropdownItem>
-                  <MDBDropdownItem><Link to="/addTrail">Add Trail</Link></MDBDropdownItem>
+                <MDBDropdownItem><Link to="/addAttraction"> Attraction</Link></MDBDropdownItem>
+                  <MDBDropdownItem><Link to="/addCampground"> Campground</Link></MDBDropdownItem>
+                <MDBDropdownItem ><Link to='/addLake'> Lake</Link></MDBDropdownItem>
+                <MDBDropdownItem><Link to="/addPeak"> Peak</Link></MDBDropdownItem>
+                  <MDBDropdownItem><Link to="/addRiver"> River</Link></MDBDropdownItem>
+                  <MDBDropdownItem><Link to="/addTrail"> Trail</Link></MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
         </MDBNavItem>
@@ -72,9 +75,24 @@ class Navigation extends Component {
           <span className="sr-only">(current)</span>
         </Link>
       </li>
-      <li className="nav-item">
-        <Link className="nav-link"  to='/attractions' >See Attractions </Link>
-      </li>
+      <MDBNavItem>
+              <MDBDropdown>
+                <MDBDropdownToggle nav caret>
+                  <span className="mr-2">See Attractions </span>
+                </MDBDropdownToggle>
+                <MDBDropdownMenu>
+                <MDBDropdownItem ><Link to='/attractions'> Attractions</Link></MDBDropdownItem>
+                <MDBDropdownItem ><Link to='/campgrounds'> Campgrounds</Link></MDBDropdownItem> 
+                <MDBDropdownItem ><Link to='/lakes'> Lakes</Link></MDBDropdownItem>
+                <MDBDropdownItem ><Link to='/rivers'> Rivers</Link></MDBDropdownItem>
+                <MDBDropdownItem ><Link to='/peaks'> Peaks</Link></MDBDropdownItem>
+                <MDBDropdownItem ><Link to='/trails'> Trails</Link></MDBDropdownItem>
+               
+               
+                
+                </MDBDropdownMenu>
+              </MDBDropdown>
+        </MDBNavItem>
       <li className="nav-item">
         <Link className="nav-link"  to='/register' >Register</Link>
       </li>

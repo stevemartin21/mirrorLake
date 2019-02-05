@@ -21,6 +21,7 @@ import PropTypes from 'prop-types'
     }
 
     onSubmit = (e) => {
+        e.preventDefault();
         const newTrail = {
             name: this.state.name,
             distance: this.state.distance,
