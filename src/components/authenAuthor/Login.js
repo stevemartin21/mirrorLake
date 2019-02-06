@@ -52,16 +52,13 @@ import classnames from 'classnames';
       const {errors} = this.state
     return (
       <div className='container mt-5 mb-5'>
-          <div className='card'>
+          <div className='card mb-5'>
 
-                <div className='card-header'>Login</div>
+                <div className='card-header elegant-color text-white'>Login</div>
 
                 <div className='card-body'>
-
                     <form onSubmit={this.onSubmit}>
-                
                     <div className='md-form'>
-
                         <input 
                             type='text'
                             placeholder='Email'
@@ -69,13 +66,9 @@ import classnames from 'classnames';
                             name='email'
                             className='form-control'
                             onChange={this.onChange}
-                        
-                        
                         />
                     </div>
-
                     <div className='md-form'>
-
                         <input 
                             type='text'
                             placeholder='Password'
@@ -85,9 +78,7 @@ import classnames from 'classnames';
                             onChange={this.onChange} 
                         />
                     </div>
-
                     <input 
-
                         type='submit'
                         className='btn btn-success'
                         value='Submit'
@@ -95,7 +86,6 @@ import classnames from 'classnames';
                     </form>
                 </div>
           </div>
-        
       </div>
     )
   }

@@ -4,6 +4,7 @@ import {connect } from 'react-redux';
 import {registerUser} from '../../actions/authActions';
 import PropTypes  from 'prop-types';
 import {withRouter} from 'react-router-dom';
+import highway from '../../images/highway1.JPG';
 
  class Register extends Component {
 
@@ -51,9 +52,11 @@ import {withRouter} from 'react-router-dom';
       const { errors} = this.state;
       const {user} = this.props.auth;
     return (
-      <div className='container mt-5'>
-        <div className='card'>
-            <div className='card-header'>Register</div>
+    <div>
+    <div className=' card card-image' style={{backgroundImage: `url(${highway})`, backgroundSize: 'cover'}} >
+      <div className='container pt-5 pb-5 '>
+        <div className='card  '>
+            <div className='card-header elegant-color text-white  '>Register</div>
         <div className='card-body'>
         <form onSubmit={this.onSubmit}>
             <div className='md-form'>
@@ -101,6 +104,8 @@ import {withRouter} from 'react-router-dom';
         </div>
         </div>
         
+      </div>
+      </div>
       </div>
     )
   }

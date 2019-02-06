@@ -7,10 +7,14 @@ import { Link } from 'react-router-dom';
     return (
       <div>
           
-<footer className="page-footer font-small stylish-color-dark pt-4">
+<footer className="page-footer font-small elegant-color pt-4">
 
     
     <div className="container text-center text-md-left">
+
+      <h1 className='text-center'>Create Your Account Today</h1>
+
+      <h5 className='text-center'>And Begin your Mirror Lake Adventure</h5>
 
      
       <div className="row">
@@ -19,9 +23,11 @@ import { Link } from 'react-router-dom';
         <div className="col-md-4 mx-auto">
 
          
-          <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Footer Content</h5>
-          <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet, consectetur
-            adipisicing elit.</p>
+          <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Mirror Lake Highway</h5>
+          <p>The Mirror Lake Highway is one of the Premier Summer Destinations for people along 
+            the Wasatch Front with immense beauty, history, and amazing recreational opportunities. 
+            Please join and share with us this amazing area and experience its majesty.
+          </p>
 
         </div>
         
@@ -36,16 +42,16 @@ import { Link } from 'react-router-dom';
 
           <ul className="list-unstyled">
             <li>
-              <Link to='/dashboard'>Link 1</Link>
+              <Link to='/'>Home</Link>
             </li>
             <li>
-              <Link to='/dashboard'>Link 2</Link>
+              <Link to='/register'>Register</Link>
             </li>
             <li>
-              <Link to='/dashboard' >Link 3</Link>
+              <Link to='/login' >Login</Link>
             </li>
             <li>
-              <Link to='/dashboard'>Link 4</Link>
+              <Link to='/map'>Map</Link>
             </li>
           </ul>
 
@@ -61,7 +67,7 @@ import { Link } from 'react-router-dom';
 
           <ul className="list-unstyled">
             <li>
-              <Link to='/dashboard' >Link 1</Link>
+              <Link to='/dashboard' >Home</Link>
             </li>
             <li>
               <Link to='/dashboard'>Link 2</Link>
