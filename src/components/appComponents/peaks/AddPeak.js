@@ -3,6 +3,7 @@ import {connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom';
 import {createPeak} from '../../../actions/createActions';
+import peak from '../../../images/haydenPeak.JPG';
 
 
  class AddPeak extends Component {
@@ -36,9 +37,11 @@ import {createPeak} from '../../../actions/createActions';
 
   render() {
     return (
+    <div>
+         <div className=' card card-image' style={{backgroundImage: `url(${peak})`, backgroundSize: 'cover'}} >
       <div className='container mt-5 mb-5'>
 
-            <div className='card'>
+            <div className='card addInput'>
 
                 <div className='card-header'>Add Peak</div>
 
@@ -108,6 +111,8 @@ import {createPeak} from '../../../actions/createActions';
             
             
             
+            </div>
+            </div>
             </div>
         
       </div>

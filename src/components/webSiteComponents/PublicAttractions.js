@@ -3,7 +3,7 @@ import {connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import {readAttractions} from '../../actions/readActions';
-import Attraction from '../../components/appComponents/attractions/Attraction';
+import PublicAttractionItem from '../../components/appComponents/attractions/PublicAttractionItem';
 
  class PublicAttractions extends Component {
 
@@ -15,12 +15,12 @@ import Attraction from '../../components/appComponents/attractions/Attraction';
     let listOfAttractions;
 
     if(attractions === null) {
-      listOfAttractions = <h1 className='text-center'>There are no Attractions to manage at this time</h1>
+      listOfAttractions = <h1 className='text-center'>There are no Attractions </h1>
     } else if (attractions.length > 0 ) {
       listOfAttractions = attractions.map(attraction => (
         // <Lake key={lake._id} lake={lake}></Lake>
         
-        <Attraction key key={attraction._id} attraction={attraction}></Attraction>
+        <PublicAttractionItem key key={attraction._id} attraction={attraction}></PublicAttractionItem>
       ))
     } else {
         listOfAttractions = <h1>There are no Attractions</h1>
@@ -30,7 +30,7 @@ import Attraction from '../../components/appComponents/attractions/Attraction';
         <div>
          <div className='container mt-5 mb-5'>
 
-            <h1> Manage your attractions here</h1>
+            <h1 className='text-center'> Mirror Lake Highway Special Attractions</h1>
             {listOfAttractions}
             </div>
       </div>

@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import classname from 'classnames';
 import PropTypes from 'prop-types';
 import {createLake } from '../../actions/createActions';
+import lake from '../../images/washington1.JPG';
 
 class AddLake extends Component {
 
@@ -45,9 +46,10 @@ class AddLake extends Component {
   render() {
     return (
       <div>
+          <div className=' card card-image' style={{backgroundImage: `url(${lake})`, backgroundSize: 'cover'}} >
         <div className='container mt-5 mb-5'>
 
-            <div className='card'>
+            <div className='card addInput'>
 
               <div className='card-header'>Add a Lake</div>
 
@@ -118,6 +120,7 @@ class AddLake extends Component {
               </div>
             </div>
         
+        </div>
         </div>
       </div>
     )

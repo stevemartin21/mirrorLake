@@ -3,6 +3,7 @@ import {connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {createAttraction} from '../../../actions/createActions';
+import attraction from '../../../images/attraction1.JPG';
 
  class AddAttractions extends Component {
 
@@ -36,9 +37,10 @@ import {createAttraction} from '../../../actions/createActions';
   render() {
     return (
       <div>
+          <div className=' card card-image' style={{backgroundImage: `url(${attraction})`, backgroundSize: 'cover'}} >
           <div className='container mt-5 mb-5'>
 
-                <div className='card'>
+                <div className='card addInput'>
                     <div className='card-header'>Add Attraction</div>
                 
                     <div className='card-body'>
@@ -89,6 +91,7 @@ import {createAttraction} from '../../../actions/createActions';
           
           
           
+          </div>
           </div>
 
         

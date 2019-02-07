@@ -55,8 +55,10 @@ import highway from '../../images/highway1.JPG';
     <div>
     <div className=' card card-image' style={{backgroundImage: `url(${highway})`, backgroundSize: 'cover'}} >
       <div className='container pt-5 pb-5 '>
-        <div className='card  '>
-            <div className='card-header elegant-color text-white  '>Register</div>
+
+        <div className='card addInput '>
+            <div className='card-header elegant-color text-white '>Register</div>
+            <h3 className='text-center mt-5 '>Create Your Account Today</h3>
         <div className='card-body'>
         <form onSubmit={this.onSubmit}>
             <div className='md-form'>
@@ -101,7 +103,9 @@ import highway from '../../images/highway1.JPG';
                 value='Submit'
             />
         </form>
+       
         </div>
+        <div className='card-footer text-center elegant-color text-white'>Mirror Lake Highway</div>
         </div>
         
       </div>

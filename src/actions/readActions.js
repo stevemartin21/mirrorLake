@@ -103,7 +103,7 @@ export const readPeaks = () => dispatch => {
 }
 
 export const readPeak = (id) => dispatch => {
-    axios.get(`http://localhost/read/peak/${id}`)
+    axios.get(`http://localhost:3001/read/peak/${id}`)
         .then(res => dispatch({
             type: READ_PEAK,
             payload: res.data

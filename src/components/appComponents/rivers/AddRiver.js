@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {createRiver} from '../../../actions/createActions';
 import {withRouter} from 'react-router-dom';
+import river from '../../../images/provoRiver.JPG';
 
  class AddRiver extends Component {
 
@@ -19,6 +20,7 @@ import {withRouter} from 'react-router-dom';
      }
 
      onSubmit = (e) => {
+         e.preventDefault()
          const newRiver = {
              name: this.state.name,
              image: this.state.image,
@@ -26,14 +28,18 @@ import {withRouter} from 'react-router-dom';
          }
 
          console.log(newRiver);
+
+         this.props.createRiver(newRiver, this.props.history);
      }
 
 
   render() {
     return (
+    <div>
+        <div className=' card card-image' style={{backgroundImage: `url(${river})`, backgroundSize: 'cover'}} >
       <div className='container mt-5 mb-5'>
 
-        <div className='card'>
+        <div className='card addInput'>
             <div className='card-header'>Add River</div>
             <div className='card-body'>
                 <form onSubmit={this.onSubmit}>
@@ -84,7 +90,8 @@ import {withRouter} from 'react-router-dom';
         </div>
 
         
-        
+        </div>
+      </div>
       </div>
     )
   }

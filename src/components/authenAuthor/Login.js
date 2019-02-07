@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom';
 import {loginUser} from '../../actions/authActions';
 import classnames from 'classnames';
+import river from '../../images/provoRiver.JPG';
 
  class Login extends Component {
      constructor() {
@@ -51,8 +52,13 @@ import classnames from 'classnames';
   render() {
       const {errors} = this.state
     return (
+        <div>
+            <div className=' card card-image' style={{backgroundImage: `url(${river})`, backgroundSize: 'cover'}} >
+
+
+        
       <div className='container mt-5 mb-5'>
-          <div className='card mb-5'>
+          <div className='card mb-5 addInput'>
 
                 <div className='card-header elegant-color text-white'>Login</div>
 
@@ -80,12 +86,14 @@ import classnames from 'classnames';
                     </div>
                     <input 
                         type='submit'
-                        className='btn btn-success'
+                        className='btn btn-success btn-block'
                         value='Submit'
                     />
                     </form>
                 </div>
           </div>
+          </div>
+      </div>
       </div>
     )
   }

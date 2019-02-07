@@ -36,6 +36,8 @@ import PublicAttractions from './components/webSiteComponents/PublicAttractions'
 import PublicCampgrounds from './components/webSiteComponents/PublicCampgrounds';
 import PublicPeaks from './components/webSiteComponents/PublicPeaks';
 import PublicRivers from './components/webSiteComponents/PublicRivers';
+import ContactUs from './components/webSiteComponents/ContactUs';
+
 
 if (localStorage.jwtToken) {
   // Set auth token header auth need to add a trail
@@ -52,7 +54,7 @@ if (localStorage.jwtToken) {
     store.dispatch(logoutUser());
     // TODO: Clear current Profile
 
-    // Redirect to login
+    // Redirect to login a couple more
     window.location.href = '/login';
   }
 }
@@ -76,6 +78,7 @@ class App extends Component {
             <Route exact path='/campgrounds' component={ PublicCampgrounds } />
             <Route exact path='/peaks' component={ PublicPeaks } />
             <Route exact path='/rivers' component={ PublicRivers } />
+            <Route exact path='/contact' component={ ContactUs } />
         <Switch>  
         <PrivateRouter exact path='/addLake' component={AddLake} />
         <PrivateRouter exact path='/dashboard' component={Dashboard} />

@@ -21,7 +21,7 @@ class Navigation extends Component {
     const authLinks = (
       <ul className="navbar-nav ml-auto">
       <li className="nav-item active">
-        <Link className="nav-link"  to='/' >Dashboard
+        <Link className="nav-link"  to='/dashboard' >Dashboard
           <span className="sr-only">(current)</span>
         </Link>
       </li>
@@ -84,8 +84,9 @@ class Navigation extends Component {
                 <MDBDropdownItem ><Link to='/attractions'> Attractions</Link></MDBDropdownItem>
                 <MDBDropdownItem ><Link to='/campgrounds'> Campgrounds</Link></MDBDropdownItem> 
                 <MDBDropdownItem ><Link to='/lakes'> Lakes</Link></MDBDropdownItem>
-                <MDBDropdownItem ><Link to='/rivers'> Rivers</Link></MDBDropdownItem>
                 <MDBDropdownItem ><Link to='/peaks'> Peaks</Link></MDBDropdownItem>
+                <MDBDropdownItem ><Link to='/rivers'> Rivers</Link></MDBDropdownItem>
+               
                 <MDBDropdownItem ><Link to='/trails'> Trails</Link></MDBDropdownItem>
                
                

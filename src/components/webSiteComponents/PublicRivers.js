@@ -3,7 +3,7 @@ import {connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom';
 import {readRivers} from '../../actions/readActions';
-import River from '../../components/appComponents/rivers/River';
+import PublicRiverItem from '../../components/appComponents/rivers/PublicRiverItem';
 
  class PublicRivers extends Component {
     componentDidMount() {
@@ -15,12 +15,12 @@ import River from '../../components/appComponents/rivers/River';
     let listOfRivers;
 
     if(rivers === null) {
-      listOfRivers = <h1 className='text-center'>There are no Campgrounds to manage at this time</h1>
+      listOfRivers = <h1 className='text-center'>There are no Rivers to manage at this time</h1>
     } else if (rivers.length > 0 ) {
       listOfRivers = rivers.map(river => (
         // <Lake key={lake._id} lake={lake}></Lake>
         
-        <River key key={river._id} peak={river}></River>
+        <PublicRiverItem key key={river._id} river={river}></PublicRiverItem>
       ))
     } else {
         listOfRivers = <h1>There are no Rivers</h1>
@@ -30,7 +30,7 @@ import River from '../../components/appComponents/rivers/River';
         <div>
             <div className='container mt-5 mb-5'>
 
-            <h1> Manage your rivers here</h1>
+            <h1 className='text-center'> Mirror Lake Area Rivers</h1>
             {listOfRivers}
             </div>
         

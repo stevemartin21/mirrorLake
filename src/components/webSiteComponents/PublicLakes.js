@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { readLakes } from '../../actions/readActions';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import Lake from '../appComponents/Lake';
+import PublicLakeItem from '../appComponents/PublicLakeItem';
 
 class PublicLakes extends Component {
 
@@ -20,7 +20,7 @@ class PublicLakes extends Component {
         listOfLakes = lakes.map(lake => (
           // <Lake key={lake._id} lake={lake}></Lake>
           
-          <Lake key key={lake._id} lake={lake}></Lake>
+          <PublicLakeItem key key={lake._id} lake={lake}></PublicLakeItem>
         ))
       } else {
           listOfLakes = <h1>There are no lakes</h1>
@@ -29,7 +29,7 @@ class PublicLakes extends Component {
     return (
         <div className='container mt-5 mb-5'>
 
-        <h1> Manage your lakes here</h1>
+        <h1 className='text-center'> Lakes</h1>
           {listOfLakes}
       </div>
     )

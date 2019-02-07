@@ -12,9 +12,7 @@ import { Link } from 'react-router-dom';
     
     <div className="container text-center text-md-left">
 
-      <h1 className='text-center'>Create Your Account Today</h1>
-
-      <h5 className='text-center'>And Begin your Mirror Lake Adventure</h5>
+      
 
      
       <div className="row">

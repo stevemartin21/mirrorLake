@@ -3,9 +3,12 @@ import {connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import {readPeaks} from '../../actions/readActions';
-import Peak from '../../components/appComponents/peaks/Peak';
+import PublicPeakItem from '../../components/appComponents/peaks/PublicPeakItem';
 
  class PublicPeaks extends Component {
+  componentDidMount() {
+    this.props.readPeaks()
+  }
   render() {
     const {peaks} = this.props.peak;
     let listOfPeaks;
@@ -16,7 +19,7 @@ import Peak from '../../components/appComponents/peaks/Peak';
       listOfPeaks = peaks.map(peak => (
         // <Lake key={lake._id} lake={lake}></Lake>
         
-        <Peak key key={peak._id} peak={peak}></Peak>
+        <PublicPeakItem key key={peak._id} peak={peak}></PublicPeakItem>
       ))
     } else {
         listOfPeaks = <h1>There are no Peaks</h1>
@@ -27,7 +30,7 @@ import Peak from '../../components/appComponents/peaks/Peak';
         <div>
         <div className='container mt-5 mb-5'>
 
-        <h1> Manage your peaks here</h1>
+        <h1> Mountain Peaks</h1>
         {listOfPeaks}
         </div>
     

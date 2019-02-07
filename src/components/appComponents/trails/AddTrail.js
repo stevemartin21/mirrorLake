@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import {createTrail} from '../../../actions/createActions';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import trail from '../../../images/provoRiverTrail.JPG';
 
 
  class AddTrail extends Component {
@@ -37,9 +38,11 @@ import PropTypes from 'prop-types'
 
   render() {
     return (
+        <div>
+            <div className=' card card-image' style={{backgroundImage: `url(${trail})`, backgroundSize: 'cover'}} >
       <div className='container mt-5 mb-5'>
 
-            <div className='card'>
+            <div className='card addInput'>
 
                 <div className='card-header'>Add Trail</div>
 
@@ -92,6 +95,8 @@ import PropTypes from 'prop-types'
                         />
                     </form>
                 </div>
+            </div>
+            </div>
             </div>
       </div>
     )

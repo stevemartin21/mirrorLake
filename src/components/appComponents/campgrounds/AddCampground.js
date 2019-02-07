@@ -3,12 +3,13 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom';
 import {createCampground} from '../../../actions/createActions';
+import campground from '../../../images/attraction2.JPG';
 
 
  class AddCampground extends Component {
      state= {
         name: '',
-        spots: '',
+        spot: '',
         description: ''
      }
 
@@ -33,9 +34,11 @@ import {createCampground} from '../../../actions/createActions';
 
   render() {
     return (
+        <div>
+             <div className=' card card-image' style={{backgroundImage: `url(${campground})`, backgroundSize: 'cover'}} >
       <div className='container mt-5 mb-5'>
 
-            <div className='card'>
+            <div className='card addInput'>
                 <div className='card-header'>Add Campground</div>
 
                 <div className='card-body'>
@@ -82,6 +85,8 @@ import {createCampground} from '../../../actions/createActions';
                 </div>
             
             
+            </div>
+            </div>
             </div>
         
       </div>

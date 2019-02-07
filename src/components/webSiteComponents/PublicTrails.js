@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {readTrails} from '../../actions/readActions';
-import Trail from '../appComponents/trails/Trail';
+import PublicTrailItem from '../appComponents/trails/PublicTrailItem';
 
 class PublicTrails extends Component {
     componentDidMount() {
@@ -19,7 +19,7 @@ class PublicTrails extends Component {
       listOfTrails = trails.map(trail => (
         // <Lake key={lake._id} lake={lake}></Lake>
         
-        <Trail  key={trail._id} trail={trail}></Trail>
+        <PublicTrailItem  key={trail._id} trail={trail}></PublicTrailItem>
       ))
     } else {
         listOfTrails = <h1>There are no Trails</h1>
@@ -33,7 +33,7 @@ class PublicTrails extends Component {
         <div>
         <div className='container mt-5 mb-5'>
 
-        <h1> Manage your trails here</h1>
+        <h1> Mirror Lake Highway Area Trails</h1>
         {listOfTrails}
         </div>
     

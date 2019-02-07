@@ -24,6 +24,7 @@ router.get('/rivers', (req, res) => {
 
 router.get('/peaks', (req, res) => {
     Peak.find().then(peaks => {
+        console.log(peaks);
         res.status(200).json(peaks)
     }).catch(err =>  res.status(400).json(err))
 })

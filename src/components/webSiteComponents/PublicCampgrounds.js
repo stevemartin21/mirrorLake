@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {readCampgrounds} from '../../actions/readActions';
-import Campground from '../../components/appComponents/campgrounds/Campground';
+import PublicCampgroundItem from '../../components/appComponents/campgrounds/PublicCampgroundItem';
 
  class PublicCampgrounds extends Component {
 
@@ -19,7 +19,7 @@ import Campground from '../../components/appComponents/campgrounds/Campground';
       listOfCampgrounds = campgrounds.map(campground => (
         // <Lake key={lake._id} lake={lake}></Lake>
         
-        <Campground key key={campground._id} campground={campground}></Campground>
+        <PublicCampgroundItem key key={campground._id} campground={campground}></PublicCampgroundItem>
       ))
     } else {
         listOfCampgrounds = <h1>There are no Campgrounds</h1>
@@ -31,7 +31,7 @@ import Campground from '../../components/appComponents/campgrounds/Campground';
         <div>
         <div className='container mt-5 mb-5'>
 
-        <h1> Manage your campgrounds here</h1>
+        <h1 className='text-center'> Mirror Lake Highway Campgrounds</h1>
         {listOfCampgrounds}
         </div>
     
