@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom';
 import {createTrail} from '../../../actions/createActions';
 import PropTypes from 'prop-types';
 import trail from '../../../images/provoRiverTrail.JPG';
+import {  MDBInput, MDBFormInline} from "mdbreact";
 
 
  class AddTrail extends Component {
@@ -12,14 +13,20 @@ import trail from '../../../images/provoRiverTrail.JPG';
         name: '',
         distance: '',
         elevationGain: '',
-        description: ''
+        description: '',
+        hike: ''
     }
 
     onChange = (e) => {
+        console.log(e.target.checked);
+        console.log(e.target.type);
+        const target = e.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
         this.setState({
-            [e.target.name]: e.target.value
-        })
-    }
+          [name]: value
+        });
+      }
 
     onSubmit = (e) => {
         e.preventDefault();
@@ -27,7 +34,8 @@ import trail from '../../../images/provoRiverTrail.JPG';
             name: this.state.name,
             distance: this.state.distance,
             elevationGain: this.state.elevationGain,
-            description: this.state.description
+            description: this.state.description,
+            hike: this.state.hike
         }
 
         console.log(newTrail)
@@ -55,8 +63,26 @@ import trail from '../../../images/provoRiverTrail.JPG';
                                 onChange={this.onChange}
                                 className='form-control form-control-lg'
                                 name='name'
+                                value={this.state.name}
                             />
                         </div>
+
+                        <div className='md-form'>
+
+                    <select className="browser-default custom-select"
+                      type='text'
+                      name='hike'
+                      onChange={this.onChange}
+                      value={this.state.hike}
+
+                    >
+                        <option>Hiking Distance</option>
+                        <option value="none">None</option>
+                        <option value="short">Short</option>
+                        <option value="medium">Medium</option>
+                        <option value="long">Long</option>
+                      </select>
+                    </div>
 
                         <div className='md-form'>
                             <input 
@@ -65,6 +91,7 @@ import trail from '../../../images/provoRiverTrail.JPG';
                                 onChange={this.onChange}
                                 className='form-control form-control-lg'
                                 name='distance'
+                                value={this.state.distance}
                             />
                         </div>
 
@@ -75,18 +102,22 @@ import trail from '../../../images/provoRiverTrail.JPG';
                                 onChange={this.onChange}
                                 className='form-control form-control-lg'
                                 name='elevationGain'
+                                value={this.state.elevationGain}
                             />
                         </div>
 
                         <div className='md-form'>
-                            <input 
-                                type='text'
-                                placeholder='Description'
-                                onChange={this.onChange}
-                                className='form-control form-control-lg'
-                                name='description'
-                            />
-                        </div>
+                  <MDBInput type="textarea" 
+                  label="Description" 
+                  rows="5"
+                  name='description'
+                  onChange={this.onChange}
+                  className='form-control form-control-lg'
+                  value={this.state.description}  
+                  
+                  />
+               
+                </div>
 
                         <input 
                             type='submit'

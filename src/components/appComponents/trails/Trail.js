@@ -25,6 +25,7 @@ import AddTrail from './AddTrail';
             <ul className='list-group'>
             <li className='list-group-item'>{trail.distance}</li>
             <li className='list-group-item'>{trail.elevationGain}</li>
+            <li className='list-group-item'>{trail.hike}</li>
                 
                 <li className='list-group-item'>{trail.description}</li>
             </ul>

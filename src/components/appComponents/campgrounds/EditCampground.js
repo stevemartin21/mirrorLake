@@ -5,6 +5,7 @@ import {withRouter } from 'react-router-dom';
 import axios from 'axios';
 import classnames from 'classnames';
 import {updateCampground} from '../../../actions/updateActions';
+import {  MDBInput, MDBFormInline} from "mdbreact";
 
 
  class EditCampground extends Component {
@@ -12,8 +13,11 @@ import {updateCampground} from '../../../actions/updateActions';
      super()
      this.state = {
        name: '',
-       spots: '',
-       description: ''
+       spot: '',
+       description: '',
+       parking: false,
+        rv: false,
+        campgrounds: false,
      }
    }
 
@@ -24,17 +28,25 @@ import {updateCampground} from '../../../actions/updateActions';
       .then(response => {
         this.setState({
           name: response.data.name,
-          spots: response.data.spots,
-          description: response.data.description
+          spot: response.data.spot,
+          description: response.data.description,
+          parking: response.data.parking,
+          rv: response.data.rv,
+          campgrounds: response.data.campgrounds
         })
       }).catch(err => console.log(err))
    }
 
    onChange = (e) => {
-     this.setState({
-       [e.target.name]: e.target.value
-     })
-   }
+    console.log(e.target.checked);
+    console.log(e.target.value);
+    const target = e.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+    this.setState({
+      [name]: value
+    });
+  }
 
    onSubmit = (e) => {
     e.preventDefault();
@@ -43,8 +55,11 @@ import {updateCampground} from '../../../actions/updateActions';
      
      const updatedCampground = {
        name: this.state.name,
-       spots: this.state.spots,
-       description: this.state.description
+       spot: this.state.spot,
+       description: this.state.description,
+       parking: this.state.parking,
+        rv: this.state.rv,
+        campgrounds: this.state.campgrounds,
      }
 
      console.log(updatedCampground)
@@ -74,29 +89,65 @@ import {updateCampground} from '../../../actions/updateActions';
                         onChange={this.onChange}
                       />
                     </div>
-
-                    <div className='md-form'>
-                      <input 
-                        placeholder='Spots'
+                  <div className='md-form'>
+                    <select className="browser-default custom-select"
                         type='text'
-                        value={this.state.image}
-                        name='spots'
-                        className='form-control form-control-lg'
+                        name='spot'
                         onChange={this.onChange}
-                      />
-                    </div>
+                        value={this.state.spot}
+                        >
+                            <option>Camping Spots</option>
+                            <option value="5"> 5</option>
+                            <option value="10">10 </option>
+                            <option value="15">15</option>
+                            <option value="> 20">> 20</option>
+                        </select>
+                        </div>
 
+                            <div className='md-form'>
+                            <MDBInput
+                            label="Parking Available" 
+                            type="checkbox" 
+                            id="checkbox1"
+                            name='parking'
+                            onChange={this.onChange}
+                            checked={this.state.parking}
+                            />
+                            </div>
+                                <div className='md-form'>
+                                <MDBInput
+                                label="RV Hookups" 
+                                type="checkbox" 
+                                id="checkbox2"
+                                name='rv'
+                                onChange={this.onChange}
+                                checked={this.state.rv}
+                                />
+                                </div>
+                                <div className='md-form'>
+                                <MDBInput
+                                label="Designated Campgrounds"
+                                
+                                type="checkbox"
+                                id="checkbox3"
+                                name='campgrounds'
+                                onChange={this.onChange}
+                                checked={this.state.campgrounds}
+                                
+                                />
+
+                                </div>
                     <div className='md-form'>
-                      <input 
-                        placeholder='Description'
-                        type='text'
-                        value={this.state.description}
-                        name='description'
-                        className='form-control form-control-lg'
-                        onChange={this.onChange}
-                      />
-                    </div>
-
+                                    <MDBInput type="textarea" 
+                                    label="Description" 
+                                    rows="5"
+                                    name='description'
+                                    onChange={this.onChange}
+                                    value={this.state.description}
+                                    className='form-control form-control-lg'  
+                                    
+                                    />
+                                    </div>
                     <input 
                       type='submit'
                       value='Update'

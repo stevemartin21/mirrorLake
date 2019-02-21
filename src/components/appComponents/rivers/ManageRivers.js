@@ -23,7 +23,7 @@ import River from './River';
       listOfRivers = rivers.map(river => (
         // <Lake key={lake._id} lake={lake}></Lake>
         
-        <River key key={river._id} peak={river}></River>
+        <River key key={river._id} river={river}></River>
       ))
     } else {
         listOfRivers = <h1>There are no Rivers</h1>

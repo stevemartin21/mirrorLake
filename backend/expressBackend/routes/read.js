@@ -80,8 +80,10 @@ router.get('/campground/:id', (req, res) => {
 })
 
 router.get('/trail/:id', (req, res) => {
+    console.log(req.params.id)
     Trail.findOne({_id: req.params.id})
-        then(trail => {
+        .then(trail => {
+            console.log(trail);
             res.status(200).json(trail)
         }).catch(err =>  res.status(400).json(err))
 })

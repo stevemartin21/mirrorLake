@@ -13,7 +13,8 @@ import {deletePeak} from '../../../actions/deleteActions';
 
   
   render() { 
-    const {peak} = this.props
+    const {peak} = this.props;
+    console.log(peak);
     return (
       <div className='container'>
 
@@ -25,7 +26,9 @@ import {deletePeak} from '../../../actions/deleteActions';
 
             <li className='list-group-item'>{peak.prominence}</li>
                 <li className='list-group-item'>{peak.elevation}</li>
+                <li className='list-group-item'>{peak.hike}</li>
                 <li className='list-group-item'>{peak.description}</li>
+                <li className='list-group-item'>{peak.elevationGain}</li>
             </ul>
           
           

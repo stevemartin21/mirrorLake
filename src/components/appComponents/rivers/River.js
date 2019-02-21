@@ -25,7 +25,10 @@ import AddRiver from './AddRiver';
             <ul className='list-group'>
 
             <li className='list-group-item'>{river.image}</li>
-                
+            <li className='list-group-item'>{river.sizeDesc}</li>
+            <li className='list-group-item'>{river.type}</li>
+            <li className='list-group-item'>{river.length}</li> 
+            <li className='list-group-item'>{river.origin}</li>
                 <li className='list-group-item'>{river.description}</li>
             </ul>
           

@@ -5,6 +5,7 @@ import {withRouter } from 'react-router-dom';
 import axios from 'axios';
 import classnames from 'classnames';
 import {updateTrail} from '../../../actions/updateActions';
+import {  MDBInput, MDBFormInline} from "mdbreact";
 
 
  class EditTrails extends Component {
@@ -14,7 +15,8 @@ import {updateTrail} from '../../../actions/updateActions';
        name: '',
        distance: '',
        elevationGain: '',
-       description: ''
+       description: '',
+       hike: ''
      }
    }
 
@@ -27,16 +29,22 @@ import {updateTrail} from '../../../actions/updateActions';
           name: response.data.name,
           elevationGain: response.data.elevationGain,
           distance: response.data.distance,
-          description: response.data.description
+          description: response.data.description,
+          hike: response.data.hike
         })
       }).catch(err => console.log(err))
    }
 
    onChange = (e) => {
-     this.setState({
-       [e.target.name]: e.target.value
-     })
-   }
+    console.log(e.target.checked);
+    console.log(e.target.type);
+    const target = e.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+    this.setState({
+      [name]: value
+    });
+  }
 
    onSubmit = (e) => {
     e.preventDefault();
@@ -47,7 +55,8 @@ import {updateTrail} from '../../../actions/updateActions';
        name: this.state.name,
        elevationGain: this.state.elevationGain,
        distance: this.state.distance,
-       description: this.state.description
+       description: this.state.description,
+       hike: this.state.hike
      }
 
      console.log(updatedTrail)
@@ -79,6 +88,22 @@ import {updateTrail} from '../../../actions/updateActions';
                     </div>
 
                     <div className='md-form'>
+
+                    <select className="browser-default custom-select"
+                      type='text'
+                      name='hike'
+                      onChange={this.onChange}
+                      value={this.state.hike}
+                    >
+                        <option>Hiking Distance</option>
+                        <option value="none">None</option>
+                        <option value="short">Short</option>
+                        <option value="medium">Medium</option>
+                        <option value="long">Long</option>
+                      </select>
+                    </div>
+
+                    <div className='md-form'>
                       <input 
                         placeholder='Distance'
                         type='text'
@@ -93,7 +118,7 @@ import {updateTrail} from '../../../actions/updateActions';
                       <input 
                         placeholder='Trail'
                         type='text'
-                        value={this.state.trail}
+                        value={this.state.elevation}
                         name='elevation'
                         className='form-control form-control-lg'
                         onChange={this.onChange}
@@ -103,15 +128,17 @@ import {updateTrail} from '../../../actions/updateActions';
                     
 
                     <div className='md-form'>
-                      <input 
-                        placeholder='Description'
-                        type='text'
-                        value={this.state.description}
-                        name='description'
-                        className='form-control form-control-lg'
-                        onChange={this.onChange}
-                      />
-                    </div>
+                  <MDBInput type="textarea" 
+                  label="Description" 
+                  rows="5"
+                  name='description'
+                  onChange={this.onChange}
+                  value={this.state.description}
+                  className='form-control form-control-lg'  
+                  
+                  />
+
+                  </div>
 
                     <input 
                       type='submit'

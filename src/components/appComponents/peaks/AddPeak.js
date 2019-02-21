@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom';
 import {createPeak} from '../../../actions/createActions';
 import peak from '../../../images/haydenPeak.JPG';
+import {  MDBInput, MDBFormInline} from "mdbreact";
 
 
  class AddPeak extends Component {
@@ -12,14 +13,21 @@ import peak from '../../../images/haydenPeak.JPG';
       name: '',
       elevation: '',
       prominence: '',
-      description: ''
+      description: '',
+      hike: '',
+      elevationGain: ''
     }
 
     onChange = (e) => {
-        this.setState = ({
-            [e.target.name]: e.target.value
-        })
-    }
+        console.log(e.target.checked);
+        console.log(e.target.type);
+        const target = e.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+        this.setState({
+          [name]: value
+        });
+      }
 
     onSubmit = (e) => {
         e.preventDefault();
@@ -27,7 +35,9 @@ import peak from '../../../images/haydenPeak.JPG';
             name: this.state.name,
             elevation: this.state.elevation,
             prominence: this.state.prominence,
-            description: this.state.description
+            description: this.state.description,
+            hike: this.state.hike,
+            elevationGain: this.state.elevationGain
         }
 
         console.log(newPeak);
@@ -79,15 +89,43 @@ import peak from '../../../images/haydenPeak.JPG';
                                 />
                             </div>
 
+
+
                             <div className='md-form'>
+
+<select className="browser-default custom-select"
+  type='text'
+  name='hike'
+  onChange={this.onChange}
+>
+    <option>Hiking Distance</option>
+    <option value="none">None</option>
+    <option value="short">Short</option>
+    <option value="medium">Medium</option>
+    <option value="long">Long</option>
+  </select>
+</div>
+
+<div className='md-form'>
                                 <input 
                                     type='text'
-                                    placeholder='Description'
-                                    name='description'
+                                    placeholder='Elevation Gain from Trailhead'
+                                    name='elevationGain'
                                     className='form-control form-control-lg'
                                     onChange={this.onChange}
                                 />
                             </div>
+
+                            <div className='md-form'>
+                                    <MDBInput type="textarea" 
+                                    label="Description" 
+                                    rows="5"
+                                    name='description'
+                                    onChange={this.onChange}
+                                    className='form-control form-control-lg'  
+                                    
+                                    />
+                                    </div>
 
                             <input 
 

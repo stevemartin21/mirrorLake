@@ -67,13 +67,17 @@ router.post('/token', (req, res) => {
 })
 
 
-
 router.post('/lake', (req, res) => {
     const newLake = new Lake({
         name: req.body.name,
         size: req.body.size,
         image: req.body.image,
-        description: req.body.description
+        description: req.body.description,
+        sizeDesc: req.body.sizeDesc,
+        hike: req.body.hike,
+        parking: req.body.parking,
+        rv: req.body.rv,
+        campgrounds: req.body.campgrounds
     })
 
     newLake.save().then(lake => {
@@ -81,11 +85,23 @@ router.post('/lake', (req, res) => {
     }).catch(err => res.status(400).json(err))
 })
 
+/*
+sizeDesc: this.state.sizeDesc,
+             type: this.state.type,
+             length: this.state.length,
+             origin: this.state.origin
+
+*/
+
 router.post('/river', (req, res) => {
     const newRiver = new River({
         name: req.body.name,
         image: req.body.image,
-        description: req.body.description
+        description: req.body.description,
+        sizeDesc: req.body.sizeDesc,
+        type: req.body.type,
+        length: req.body.length,
+        origin: req.body.origin
     })
 
     newRiver.save().then(river => {
@@ -98,7 +114,9 @@ router.post('/peak', (req, res) => {
         name: req.body.name,
         elevation: req.body.elevation,
         prominence: req.body.prominence,
-        description: req.body.description
+        description: req.body.description,
+        hike: req.body.hike,
+        elevationGain: req.body.elevationGain
     })
 
     newPeak.save().then(peak => {
@@ -111,7 +129,8 @@ router.post('/trail', (req, res) => {
         name: req.body.name,
         distance: req.body.distance,
         elevationGain: req.body.elevationGain,
-        description: req.body.description
+        description: req.body.description,
+        hike: req.body.hike
     })
 
     newTrail.save().then(trail => {
@@ -122,8 +141,11 @@ router.post('/trail', (req, res) => {
 router.post('/campground', (req, res) => {
     const newCampground = new Campground({
         name: req.body.name,
-        spots: req.body.spots,
-        description: req.body.description
+        spot: req.body.spot,
+        description: req.body.description,
+        parking: req.body.parking,
+        rv: req.body.rv,
+        campgrounds: req.body.campgrounds
     })
 
     newCampground.save().then(campground => {
@@ -131,11 +153,17 @@ router.post('/campground', (req, res) => {
     }).catch(err => res.status(400).json(err))
 })
 
+
 router.post('/attraction', (req, res) => {
     const newAttraction = new Attraction({
         name: req.body.name,
         image: req.body.image,
-        description: req.body.description
+        description: req.body.description,
+        hike: req.body.hike,
+        parking: req.body.parking,
+        rv: req.body.rv,
+        campgrounds: req.body.campgrounds,
+        type: req.body.type
     })
 
     newAttraction.save().then(attraction => {

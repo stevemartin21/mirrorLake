@@ -5,6 +5,7 @@ import {withRouter } from 'react-router-dom';
 import axios from 'axios';
 import classnames from 'classnames';
 import {updateRiver} from '../../../actions/updateActions';
+import {  MDBInput, MDBFormInline} from "mdbreact";
 
 
  class EditRiver extends Component {
@@ -13,7 +14,11 @@ import {updateRiver} from '../../../actions/updateActions';
      this.state = {
        name: '',
        image: '',
-       description: ''
+       description: '',
+       sizeDesc: '',
+        type: '',
+        length: '',
+        origin: ''
      }
    }
 
@@ -25,16 +30,25 @@ import {updateRiver} from '../../../actions/updateActions';
         this.setState({
           name: response.data.name,
           image: response.data.image,
-          description: response.data.description
+          description: response.data.description,
+          sizeDesc: response.data.sizeDesc,
+          type: response.data.type,
+          length: response.data.length,
+          origin: response.data.origin
         })
       }).catch(err => console.log(err))
    }
 
    onChange = (e) => {
-     this.setState({
-       [e.target.name]: e.target.value
-     })
-   }
+    console.log(e.target.checked);
+    console.log(e.target.type);
+    const target = e.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+    this.setState({
+      [name]: value
+    });
+  }
 
    onSubmit = (e) => {
     e.preventDefault();
@@ -44,7 +58,11 @@ import {updateRiver} from '../../../actions/updateActions';
      const updatedRiver = {
        name: this.state.name,
        image: this.state.image,
-       description: this.state.description
+       description: this.state.description,
+       sizeDesc: this.state.sizeDesc,
+      type: this.state.type,
+      length: this.state.length,
+      origin: this.state.origin
      }
 
      console.log(updatedRiver)
@@ -76,6 +94,61 @@ import {updateRiver} from '../../../actions/updateActions';
                     </div>
 
                     <div className='md-form'>
+                            <input 
+                                type='text'
+                                placeholder='Origin'
+                                className='form-control form-control-lg'
+                                name='origin'
+                                onChange={this.onChange}
+                                value={this.state.origin}
+                            />
+                        </div>
+
+                        <div className='md-form'>
+                            <input 
+                                type='text'
+                                placeholder='Length'
+                                className='form-control form-control-lg'
+                                name='length'
+                                onChange={this.onChange}
+                                value={this.state.length}
+                            />
+                        </div>
+
+                        <div className='md-form'>
+
+                    <select className="browser-default custom-select"
+                      type='text'
+                      name='sizeDesc'
+                      onChange={this.onChange}
+                      value={this.state.sizeDesc}
+                    >
+                        <option>Choose your River Size</option>
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                        <option value="huge">Huge</option>
+                      </select>
+                    </div>
+
+                    <div className='md-form'>
+
+<select className="browser-default custom-select"
+  type='text'
+  name='type'
+  onChange={this.onChange}
+  value={this.state.type}
+>
+    <option>Type of River</option>
+    <option value="river">River</option>
+    <option value="stream">Stream</option>
+    <option value="creek">Creek</option>
+    <option value="fork">Fork</option>
+  </select>
+</div> 
+
+
+                    <div className='md-form'>
                       <input 
                         placeholder='Image'
                         type='text'
@@ -89,15 +162,17 @@ import {updateRiver} from '../../../actions/updateActions';
                     
 
                     <div className='md-form'>
-                      <input 
-                        placeholder='Description'
-                        type='text'
-                        value={this.state.description}
-                        name='description'
-                        className='form-control form-control-lg'
-                        onChange={this.onChange}
-                      />
-                    </div>
+                  <MDBInput type="textarea" 
+                  label="Description" 
+                  rows="5"
+                  name='description'
+                  onChange={this.onChange}
+                  className='form-control form-control-lg'  
+                  value={this.state.description}
+                  
+                  />
+               
+                </div>
 
                     <input 
                       type='submit'
@@ -113,7 +188,7 @@ import {updateRiver} from '../../../actions/updateActions';
 }
 
 EditRiver.propTypes = {
-  updatePeak: PropTypes.func.isRequired,
+  updateRiver: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
   river: PropTypes.object.isRequired
 }

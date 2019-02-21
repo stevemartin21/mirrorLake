@@ -5,6 +5,7 @@ import classname from 'classnames';
 import PropTypes from 'prop-types';
 import {createLake } from '../../actions/createActions';
 import lake from '../../images/washington1.JPG';
+import {  MDBInput, MDBFormInline} from "mdbreact";
 
 class AddLake extends Component {
 
@@ -14,14 +15,24 @@ class AddLake extends Component {
       name: '',
       size: '',
       description: '',
-      image: ''
+      image: '',
+      sizeDesc: '',
+      hike: '',
+      parking: false,
+      rv: false,
+      campgrounds: false
     }
   }
 
   onChange = (e) => {
+    console.log(e.target.checked);
+    console.log(e.target.type);
+    const target = e.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
     this.setState({
-      [e.target.name]: e.target.value
-    })
+      [name]: value
+    });
   }
 
   onSubmit =(e) => {
@@ -31,7 +42,13 @@ class AddLake extends Component {
       name: this.state.name,
       size: this.state.size,
       image: this.state.image,
-      description: this.state.description
+      description: this.state.description,
+      sizeDesc: this.state.sizeDesc,
+      hike: this.state.hike,
+      parking: this.state.parking,
+      rv: this.state.rv,
+      campgrounds: this.state.campgrounds
+      
     }
 
     console.log(newLake);
@@ -60,7 +77,7 @@ class AddLake extends Component {
                     <div className='md-form'>
 
                       <input 
-                        placeholder='Name'
+                        placeholder=' Lake Name'
                         type='text'
                         name='name'
                         onChange={this.onChange}
@@ -71,7 +88,7 @@ class AddLake extends Component {
                     <div className='md-form'>
 
                     <input 
-                      placeholder='Size'
+                      placeholder='Surface area in acres'
                       type='text'
                       name='size'
                       onChange={this.onChange}
@@ -80,6 +97,36 @@ class AddLake extends Component {
 
                     />
 
+                    </div>
+
+                    <div className='md-form'>
+
+                    <select className="browser-default custom-select"
+                      type='text'
+                      name='sizeDesc'
+                      onChange={this.onChange}
+                    >
+                        <option>Choose your Lake Size</option>
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                        <option value="huge">Huge</option>
+                      </select>
+                    </div>
+
+                    <div className='md-form'>
+
+                    <select className="browser-default custom-select"
+                      type='text'
+                      name='hike'
+                      onChange={this.onChange}
+                    >
+                        <option>Hiking Distance</option>
+                        <option value="none">None</option>
+                        <option value="short">Short</option>
+                        <option value="medium">Medium</option>
+                        <option value="long">Long</option>
+                      </select>
                     </div>
 
                     <div className='md-form'>
@@ -96,16 +143,60 @@ class AddLake extends Component {
 
                   </div>
 
+                  
+                  
                   <div className='md-form'>
 
-                <input 
-                  placeholder='Description'
-                  type='text'
+                
+                <MDBInput
+                 label="Parking Available" 
+                  type="checkbox" 
+                 id="checkbox1"
+                 name='parking'
+                  onChange={this.onChange}
+                  checked={this.state.parking}
+                  />
+                  </div>
+                <div className='md-form'>
+                <MDBInput
+                 label="RV Hookups" 
+                  type="checkbox" 
+                 id="checkbox2"
+                 name='rv'
+                  onChange={this.onChange}
+                  checked={this.state.rv}
+                  />
+                </div>
+                <div className='md-form'>
+                <MDBInput
+                 label="Designated Campgrounds"
+                  
+                  type="checkbox"
+                   id="checkbox3"
+                   name='campgrounds'
+                  onChange={this.onChange}
+                  checked={this.state.campgrounds}
+                   
+                   />
+              
+                  
+                  
+                  
+                  </div>
+
+                  <div className='md-form'>
+                  <MDBInput type="textarea" 
+                  label="Description" 
+                  rows="5"
                   name='description'
                   onChange={this.onChange}
-                  className='form-control form-control-lg'
-                />
+                  className='form-control form-control-lg'  
+                  
+                  />
+               
                 </div>
+
+            
 
                 <input 
 

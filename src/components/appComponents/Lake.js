@@ -13,7 +13,28 @@ import {deleteLake} from '../../actions/deleteActions';
 
   
   render() { 
-    const {lake} = this.props
+    const {lake} = this.props;
+    let parking;
+    let rv;
+    let campgrounds;
+    console.log(lake);
+    if(lake.parking == true) {
+      parking = 'Yes'
+    } else {
+      parking = 'No'
+    }
+
+    if(lake.rv == true) {
+      rv = 'Yes'
+    } else {
+      rv = 'No'
+    }
+
+    if(lake.campgrounds == true) {
+      campgrounds = 'Yes'
+    } else {
+      campgrounds = 'No'
+    }
     return (
       <div className='container'>
 
@@ -26,6 +47,11 @@ import {deleteLake} from '../../actions/deleteActions';
                 <li className='list-group-item'>{lake.size}</li>
                 <li className='list-group-item'>{lake.image}</li>
                 <li className='list-group-item'>{lake.description}</li>
+                <li className='list-group-item'>{lake.sizeDesc}</li>
+                <li className='list-group-item'>{lake.hike}</li>
+                <li className='list-group-item'>Parking Available: {parking}</li>
+                <li className='list-group-item'>RV hookups: {rv}</li>
+                <li className='list-group-item'>Assigned Campgrounds: {campgrounds}</li>
             
             
             </ul>

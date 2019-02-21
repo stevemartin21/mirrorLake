@@ -5,6 +5,7 @@ import {withRouter } from 'react-router-dom';
 import axios from 'axios';
 import classnames from 'classnames';
 import {updateLake} from '../../actions/updateActions';
+import {  MDBInput, MDBFormInline} from "mdbreact";
 
 
  class EditLake extends Component {
@@ -14,7 +15,12 @@ import {updateLake} from '../../actions/updateActions';
        name: '',
        size: '',
        image: '',
-       description: ''
+       description: '',
+       sizeDesc: '',
+      hike: '',
+      parking: false,
+      rv: false,
+      campgrounds: false
      }
    }
 
@@ -27,16 +33,27 @@ import {updateLake} from '../../actions/updateActions';
           name: response.data.name,
           size: response.data.size,
           image: response.data.image,
-          description: response.data.description
+          description: response.data.description,
+          sizeDesc: response.data.sizeDesc,
+          hike: response.data.hike,
+          parking: response.data.parking,
+          rv: response.data.rv,
+          campgrounds: response.data.campgrounds
+
         })
       }).catch(err => console.log(err))
    }
 
    onChange = (e) => {
-     this.setState({
-       [e.target.name]: e.target.value
-     })
-   }
+    console.log(e.target.checked);
+    console.log(e.target.type);
+    const target = e.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+    this.setState({
+      [name]: value
+    });
+  }
 
    onSubmit = (e) => {
     e.preventDefault();
@@ -47,7 +64,12 @@ import {updateLake} from '../../actions/updateActions';
        name: this.state.name,
        size: this.state.size,
        image: this.state.image,
-       description: this.state.description
+       description: this.state.description,
+       sizeDesc: this.state.sizeDesc,
+      hike: this.state.hike,
+      parking: this.state.parking,
+      rv: this.state.rv,
+      campgrounds: this.state.campgrounds
      }
 
      console.log(updatedLake)
@@ -80,7 +102,7 @@ import {updateLake} from '../../actions/updateActions';
 
                     <div className='md-form'>
                       <input 
-                        placeholder='Size'
+                        placeholder='Size Surface area'
                         type='text'
                         value={this.state.size}
                         name='size'
@@ -101,15 +123,88 @@ import {updateLake} from '../../actions/updateActions';
                     </div>
 
                     <div className='md-form'>
-                      <input 
-                        placeholder='Description'
-                        type='text'
-                        value={this.state.description}
-                        name='description'
-                        className='form-control form-control-lg'
-                        onChange={this.onChange}
-                      />
+
+                    <select className="browser-default custom-select"
+                      type='text'
+                      name='sizeDesc'
+                      onChange={this.onChange}
+                      value={this.state.sizeDesc}
+                    >
+                        <option>Choose your Lake Size</option>
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                        <option value="huge">Huge</option>
+                      </select>
                     </div>
+
+                    <div className='md-form'>
+
+                    <select className="browser-default custom-select"
+                      type='text'
+                      name='hike'
+                      onChange={this.onChange}
+                      value={this.state.hike}
+                    >
+                        <option>Hiking Distance</option>
+                        <option value="none">None</option>
+                        <option value="short">Short</option>
+                        <option value="medium">Medium</option>
+                        <option value="long">Long</option>
+                      </select>
+                    </div>
+
+                    <div className='md-form'>
+
+                
+                <MDBInput
+                 label="Parking Available" 
+                  type="checkbox" 
+                 id="checkbox1"
+                 name='parking'
+                  onChange={this.onChange}
+                  checked={this.state.parking}
+                  />
+                  </div>
+                <div className='md-form'>
+                <MDBInput
+                 label="RV Hookups" 
+                  type="checkbox" 
+                 id="checkbox2"
+                 name='rv'
+                  onChange={this.onChange}
+                  checked={this.state.rv}
+                  />
+                </div>
+                <div className='md-form'>
+                <MDBInput
+                 label="Designated Campgrounds"
+                  
+                  type="checkbox"
+                   id="checkbox3"
+                   name='campgrounds'
+                  onChange={this.onChange}
+                  checked={this.state.campgrounds}
+                   
+                   />
+              
+                  
+                  
+                  
+                  </div>
+
+                  <div className='md-form'>
+                  <MDBInput type="textarea" 
+                  label="Description" 
+                  rows="5"
+                  value={this.state.description}
+                  name='description'
+                  onChange={this.onChange}
+                  className='form-control form-control-lg'  
+                  
+                  />
+               
+                </div>
 
                     <input 
                       type='submit'
@@ -118,19 +213,8 @@ import {updateLake} from '../../actions/updateActions';
                     
                     
                     />
-
-
-
-
-
-
                 </form>
-            
-            
-            
             </div>
-        
-        
         </div>
 
       </div>

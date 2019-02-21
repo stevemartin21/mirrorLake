@@ -14,6 +14,27 @@ import {deleteAttraction} from '../../../actions/deleteActions';
   
   render() { 
     const {attraction} = this.props
+    let parking;
+    let rv;
+    let campgrounds;
+    console.log();
+    if(attraction.parking == true) {
+      parking = 'Yes'
+    } else {
+      parking = 'No'
+    }
+
+    if(attraction.rv == true) {
+      rv = 'Yes'
+    } else {
+      rv = 'No'
+    }
+
+    if(attraction.campgrounds == true) {
+      campgrounds = 'Yes'
+    } else {
+      campgrounds = 'No'
+    }
     return (
       <div className='container'>
 
@@ -26,6 +47,11 @@ import {deleteAttraction} from '../../../actions/deleteActions';
             
                 <li className='list-group-item'>{attraction.image}</li>
                 <li className='list-group-item'>{attraction.description}</li>
+                <li className='list-group-item'>{attraction.hike}</li>
+                <li className='list-group-item'>{attraction.type}</li>
+                <li className='list-group-item'>{parking}</li>
+                <li className='list-group-item'>{rv}</li>
+                <li className='list-group-item'>{campgrounds}</li>
             </ul>
           
           
